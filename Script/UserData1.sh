@@ -1,4 +1,8 @@
 #!/bin/sh
+LoadBalancerFe=""
+LoadBalancerBe=""
+
+
 sudo su -
 apt-get update -y
 cd /usr/local
