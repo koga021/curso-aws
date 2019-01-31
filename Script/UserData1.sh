@@ -1,6 +1,6 @@
 #!/bin/sh
 sudo su -
-apt-get update
+apt-get update -y
 cd /usr/local
 git clone https://github.com/koga021/curso-aws.git
 cd curso-aws
