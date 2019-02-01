@@ -16,4 +16,4 @@ apt-get install python-pip -y
 pip install tornado
 pip install requests
 
-python Python/CreateIndexFe.py
+python /usr/local/curso-aws/Python/CreateIndexFe.py
