@@ -14,3 +14,4 @@ apt-get install nginx -y
 apt-get install python-pip -y
 
 pip install tornado
+pip install requests
