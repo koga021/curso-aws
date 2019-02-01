@@ -15,3 +15,5 @@ apt-get install python-pip -y
 
 pip install tornado
 pip install requests
+
+python Python/CreateIndexFe.py
