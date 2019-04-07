@@ -1,2 +1,3 @@
 # curso-aws
-Curso ministrado na Globo.com
+ Curso Montando ambiente de datacenter 
+na Globo.com
