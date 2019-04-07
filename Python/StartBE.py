@@ -7,7 +7,7 @@ import tornado.ioloop
 import tornado.web
 import boto3
 
-sqs = boto3.client('sqs')
+sqs = boto3.client('sqs',region_name='us-east-1b',aws_access_key_id='AKIAXT3YH346U7XUH4WE',aws_secret_access_key='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')
 queue_url = 'https://sqs.us-east-1.amazonaws.com/523701313341/curso-amazon-globo.fifo'
 # Send message to SQS queue
 response = sqs.send_message(
@@ -63,3 +63,5 @@ if __name__ == "__main__":
 
     #Curl testes
     #curl -d "categoria=esportes&titulo='Botafogo campeao'&corpo='Corpo de toda a materia'" -X POST http://localhost:80/admin
+    #acess key  AKIAXT3YH346U7XUH4WE
+    #secret access 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
