@@ -39,8 +39,7 @@ response = sqs.send_message(
     MessageBody=(
         'Information about current NY Times fiction bestseller for '
         'week of 12/11/2016.'
-        'Subindo uma nova msg'.str(hex_dig).' sha256'
-    )
+        'Subindo uma nova msg'
 )
 
 print(response['MessageId'])
@@ -59,6 +58,35 @@ class CadastrarMateria(tornado.web.RequestHandler):
         titulo = self.get_argument('titulo')
         corpo = self.get_argument('corpo')
         self.write("Categoria " + categoria + "titulo " + titulo + "Corpo" + corpo)
+
+        hash_object=hashlib.sha256(os.urandom(256))
+        hex_dig=hash_object.hexdigest()
+        print(hex_dig)
+        
+        response = sqs.send_message(
+        MessageGroupId=str(hex_dig),
+        QueueUrl=queue_url,
+        MessageAttributes={
+            'Title': {
+                'DataType': 'String',
+                'StringValue': 'The Whistler'
+            },
+            'Author': {
+                'DataType': 'String',
+                'StringValue': 'John Grisham'
+            },
+            'WeeksOn': {
+                'DataType': 'Number',
+                'StringValue': '6'
+            }
+        },
+        MessageBody=(
+            'Information about current NY Times fiction bestseller for '
+            'week of 12/11/2016.'
+            'Subindo uma nova msg'
+        )
+
+        print(response['MessageId'])
 
 def make_app():
     return tornado.web.Application([
