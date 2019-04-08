@@ -22,7 +22,6 @@ queue_url = 'https://sqs.us-east-1.amazonaws.com/523701313341/curso-amazon-globo
 response = sqs.send_message(
     MessageGroupId=str(hex_dig),
     QueueUrl=queue_url,
-    DelaySeconds=10,
     MessageAttributes={
         'Title': {
             'DataType': 'String',
@@ -40,7 +39,7 @@ response = sqs.send_message(
     MessageBody=(
         'Information about current NY Times fiction bestseller for '
         'week of 12/11/2016.'
-        'Subindo uma nova msg'
+        'Subindo uma nova msg'.str(hex_dig).' sha256'
     )
 )
 
