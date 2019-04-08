@@ -19,31 +19,31 @@ print(hex_dig)
 sqs = boto3.client('sqs',region_name='us-east-1',aws_access_key_id='AKIAXT3YH346U7XUH4WE',aws_secret_access_key='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')
 queue_url = 'https://sqs.us-east-1.amazonaws.com/523701313341/curso-amazon-globo.fifo'
 # Send message to SQS queue
-response = sqs.send_message(
-    MessageGroupId=str(hex_dig),
-    QueueUrl=queue_url,
-    MessageAttributes={
-        'Title': {
-            'DataType': 'String',
-            'StringValue': 'The Whistler'
-        },
-        'Author': {
-            'DataType': 'String',
-            'StringValue': 'John Grisham'
-        },
-        'WeeksOn': {
-            'DataType': 'Number',
-            'StringValue': '6'
-        }
-    },
-    MessageBody=(
-        'Information about current NY Times fiction bestseller for '
-        'week of 12/11/2016.'
-        'Subindo uma nova msg'
-    )
-)
+#response = sqs.send_message(
+#    MessageGroupId=str(hex_dig),
+#    QueueUrl=queue_url,
+#    MessageAttributes={
+#        'Title': {
+#            'DataType': 'String',
+#            'StringValue': 'The Whistler'
+#        },
+#        'Author': {
+#            'DataType': 'String',
+#            'StringValue': 'John Grisham'
+#        },
+#        'WeeksOn': {
+#            'DataType': 'Number',
+#            'StringValue': '6'
+#        }
+#    },
+#    MessageBody=(
+#        'Information about current NY Times fiction bestseller for '
+#        'week of 12/11/2016.'
+#        'Subindo uma nova msg'
+#    )
+#)
 
-print(response['MessageId'])
+#print(response['MessageId'])
 
 
 class MainHandler(tornado.web.RequestHandler):
@@ -69,18 +69,7 @@ class CadastrarMateria(tornado.web.RequestHandler):
         MessageGroupId=str(hex_dig),
         QueueUrl=queue_url,
         MessageAttributes={
-            'Title': {
-                'DataType': 'String',
-                'StringValue': 'The Whistler'
-            },
-            'Author': {
-                'DataType': 'String',
-                'StringValue': 'John Grisham'
-            },
-            'WeeksOn': {
-                'DataType': 'Number',
-                'StringValue': '6'
-            },
+            
             'Operacao': {
                 'DataType': 'String',
                 'StringValue': operacao
@@ -98,11 +87,7 @@ class CadastrarMateria(tornado.web.RequestHandler):
                 'StringValue': corpo
             },
         },
-        MessageBody=(
-            'Information about current NY Times fiction bestseller for '
-            'week of 12/11/2016.'
-            'Subindo uma nova msg'
-        )
+        MessageBody=(corpo)
         )
 
 print(response['MessageId'])
