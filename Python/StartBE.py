@@ -80,7 +80,23 @@ class CadastrarMateria(tornado.web.RequestHandler):
             'WeeksOn': {
                 'DataType': 'Number',
                 'StringValue': '6'
-            }
+            },
+            'Operacao': {
+                'DataType': 'String',
+                'StringValue': operacao
+            },
+            'Categoria': {
+                'DataType': 'String',
+                'StringValue': categoria
+            },
+            'Titulo': {
+                'DataType': 'String',
+                'StringValue': titulo
+            },
+            'Corpo': {
+                'DataType': 'String',
+                'StringValue': corpo
+            },
         },
         MessageBody=(
             'Information about current NY Times fiction bestseller for '
@@ -103,7 +119,7 @@ if __name__ == "__main__":
     tornado.ioloop.IOLoop.current().start()
 
     #Curl testes
-    #curl -d "categoria=esportes&titulo='Botafogo campeao'&corpo='Corpo de toda a materia'" -X POST http://localhost:80/admin
+    #curl -d "categoria=esportes&titulo='Botafogo campeao'&corpo='Corpo de toda a materia'&operacao='cadastrar'" -X POST http://3.85.119.18/cadmateria
     #acess key  AKIAXT3YH346U7XUH4WE
     #secret access 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
 
