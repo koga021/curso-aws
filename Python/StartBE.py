@@ -58,7 +58,7 @@ class CadastrarMateria(tornado.web.RequestHandler):
         categoria = self.get_argument('categoria')
         titulo = self.get_argument('titulo')
         corpo = self.get_argument('corpo')
-        self.write("Categoria " + categoria + "titulo " + titulo + "Corpo" + corpo)
+        #self.write("Categoria " + categoria + "titulo " + titulo + "Corpo" + corpo)
 
 
         hash_object=hashlib.sha256(os.urandom(256))
@@ -90,7 +90,7 @@ class CadastrarMateria(tornado.web.RequestHandler):
         MessageBody=(corpo)
         )
 
-print(response['MessageId'])
+        print(response['MessageId'])
 
 def make_app():
     return tornado.web.Application([
